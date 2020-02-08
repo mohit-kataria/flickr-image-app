@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Flickr Food Image App</span>
+    </nav><br><br>
+    <div class="row row justify-content-around">
+        <div class="col-sm-6" *ngIf="imageData">
+            <div class="card mb-3">
+                <img src="https://farm{{imageData.farm}}.staticflickr.com/{{imageData.server}}/{{imageData.id}}_{{imageData.secret}}.jpg"
+                    class="card-img-top" style="height: 35vmax;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{imageData.title._content}}</h5>
+                    <p class="card-text"><b>Description:</b> {{imageData.description._content}}</p>
+                    <p class="card-text"><b>User Name:</b> {{imageData.owner.username}}</p>
+                    <p class="card-text"><b>Posted by:</b> {{imageData.owner.realname}}</p>
+                    <p class="card-text"><small class="text-muted">Posted:
+                            {{imageData.dates.taken | date:'medium'}}</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4"><br><br>
+
+                       <!-- ---------------form starts-------------- -->
+            <form #createTaskForm="ngForm">
+                <fieldset>
+                    <legend>Please rate:</legend>
+                    <input type="radio" value="10" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>10</label>
+                    <input type="radio" value="9" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>9</label>
+                    <input type="radio" value="8" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>8</label>
+                    <input type="radio" value="7" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>7</label>
+                    <input type="radio" value="6" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>6</label>
+                    <input type="radio" value="5" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>5</label>
+                    <input type="radio" value="4" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>4</label>
+                    <input type="radio" value="3" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>3</label>
+                    <input type="radio" value="2" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>2</label>
+                    <input type="radio" value="1" name="ratings" [(ngModel)]="ratings" #title="ngModel"
+                        required><label>1</label>
+                </fieldset><br>
+                <input type="text" name="ratingBy" [(ngModel)]="ratingBy" #title="ngModel" class="form-control"
+                    placeholder="Enter your Name" required><br>
+                <input type="text" name="description" [(ngModel)]="description" #title="ngModel" class="form-control"
+                    placeholder="Rating Description" required><br><br>
+                <button type="button" class="btn btn-primary" (click)="submit()"
+                    [disabled]="!createTaskForm.form.valid">Save</button>
+            </form><br>
+        </div>
+    </div>
+</div>
